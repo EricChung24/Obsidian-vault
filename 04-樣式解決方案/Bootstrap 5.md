@@ -32,36 +32,94 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 ---
 
-## 常見能力
+## 格線系統
 
-### 格線系統
+12 欄格線，搭配 `col-*` 控制各 breakpoint 的欄寬：
 
 ```html
 <div class="container">
-  <div class="row">
+  <div class="row g-3">
+    <!-- 手機全寬，平板以上各占一半 -->
     <div class="col-12 col-md-6">左側</div>
     <div class="col-12 col-md-6">右側</div>
+  </div>
+
+  <div class="row">
+    <!-- 手機全寬，平板 4/8，桌面 3/9 -->
+    <div class="col-12 col-md-4 col-lg-3">側邊欄</div>
+    <div class="col-12 col-md-8 col-lg-9">主內容</div>
   </div>
 </div>
 ```
 
-### 元件
+---
 
-常見元件有：
+## 常用元件範例
 
-- Button
-- Modal
-- Card
-- Navbar
-- Form
+### Button
 
-### Utility class
+```html
+<button class="btn btn-primary">主要</button>
+<button class="btn btn-secondary">次要</button>
+<button class="btn btn-danger">危險</button>
+<button class="btn btn-outline-primary">外框版</button>
+<button class="btn btn-sm btn-primary">小版本</button>
+```
 
-例如：
+### Card
 
-- `mt-3`
-- `d-flex`
-- `text-center`
+```html
+<div class="card" style="width: 18rem;">
+  <img src="/photo.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">標題</h5>
+    <p class="card-text">描述文字</p>
+    <a href="#" class="btn btn-primary">前往</a>
+  </div>
+</div>
+```
+
+### Modal（用 JS 控制開關）
+
+```html
+<!-- 觸發按鈕 -->
+<button data-bs-toggle="modal" data-bs-target="#confirmModal">
+  開啟確認視窗
+</button>
+
+<!-- Modal 本體 -->
+<div class="modal fade" id="confirmModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">確認刪除</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">確定要刪除嗎？</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button class="btn btn-danger">確認刪除</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### 常用 Utility class
+
+```html
+<!-- spacing：m = margin，p = padding，t/b/s/e/x/y = 方向，0–5 = 大小 -->
+<div class="mt-3 mb-2 px-4">...</div>
+
+<!-- flex -->
+<div class="d-flex justify-content-between align-items-center gap-2">...</div>
+
+<!-- text -->
+<p class="text-center text-muted fw-bold">...</p>
+
+<!-- 顯示/隱藏（響應式） -->
+<div class="d-none d-md-block">只在 md 以上顯示</div>
+```
 
 ---
 

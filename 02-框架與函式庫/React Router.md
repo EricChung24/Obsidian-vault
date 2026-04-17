@@ -42,27 +42,119 @@ const router = createBrowserRouter([
 
 ---
 
-## 常見功能
+## 動態參數：useParams
 
-### 巢狀路由
+```tsx
+// 路由設定：path: 'users/:userId'
+import { useParams } from 'react-router-dom';
 
-適合共享 layout。
-
-### 動態參數
-
-像：
-
-```txt
-/users/:userId
+function UserPage() {
+  const { userId } = useParams<{ userId: string }>();
+  return <div>使用者 ID：{userId}</div>;
+}
 ```
 
-### 導航
+---
 
-常見用：
+## 導航：Link、NavLink、useNavigate
 
-- `Link`
-- `NavLink`
-- `useNavigate`
+```tsx
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+
+// Link：基本頁面跳轉
+<Link to="/about">關於我們</Link>
+
+// NavLink：自動偵測是否為當前路由，可加 active 樣式
+<NavLink
+  to="/dashboard"
+  className={({ isActive }) => isActive ? 'text-blue-600 font-bold' : 'text-gray-600'}
+>
+  儀表板
+</NavLink>
+
+// useNavigate：程式碼觸發跳轉（如登入後轉向）
+function LoginPage() {
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    await login();
+    navigate('/dashboard');         // 前往
+    // navigate(-1);                // 回上一頁
+    // navigate('/login', { replace: true }); // 替換歷史紀錄（避免能按回去）
+  };
+}
+```
+
+---
+
+## 巢狀路由與共享 Layout
+
+```tsx
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,   // 包含 Navbar、Footer 的外層
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: 'about', element: <AboutPage /> },
+      {
+        path: 'users',
+        element: <UsersLayout />,
+        children: [
+          { index: true, element: <UserListPage /> },
+          { path: ':userId', element: <UserDetailPage /> },
+        ],
+      },
+    ],
+  },
+]);
+```
+
+子路由會渲染在父元件的 `<Outlet />` 位置：
+
+```tsx
+import { Outlet } from 'react-router-dom';
+
+function RootLayout() {
+  return (
+    <>
+      <Navbar />
+      <main>
+        <Outlet />   {/* 子路由內容渲染在這裡 */}
+      </main>
+      <Footer />
+    </>
+  );
+}
+```
+
+---
+
+## 保護路由（Protected Route）
+
+登入驗證後才能進入的頁面：
+
+```tsx
+function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  const { isLoggedIn } = useAuth();
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <>{children}</>;
+}
+
+// 用法
+{
+  path: 'dashboard',
+  element: (
+    <ProtectedRoute>
+      <DashboardPage />
+    </ProtectedRoute>
+  ),
+}
+```
 
 ---
 

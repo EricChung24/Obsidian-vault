@@ -54,17 +54,91 @@ created: 2026-04-17
 
 ## 常見實戰拆法
 
-### UI 元件
+### UI 元件（純顯示）
 
-只管顯示，不碰太多業務邏輯。
+只管顯示，不碰業務邏輯。資料來自 props。
 
-### Feature 元件
+```tsx
+interface UserCardProps {
+  name: string;
+  avatarUrl: string;
+  onClick: () => void;
+}
 
-組合多個小元件，處理一個完整功能區。
+function UserCard({ name, avatarUrl, onClick }: UserCardProps) {
+  return (
+    <div className="card" onClick={onClick}>
+      <img src={avatarUrl} alt={name} />
+      <span>{name}</span>
+    </div>
+  );
+}
+```
 
-### Custom hook
+### Feature 元件（組合業務）
 
-抽邏輯，不抽畫面。
+負責一個完整功能區域，組合多個 UI 元件，自己管理 state 或串 API。
+
+```tsx
+function UserListSection() {
+  const { data: users, isLoading } = useUsers();
+
+  if (isLoading) return <Spinner />;
+
+  return (
+    <div>
+      {users.map(user => (
+        <UserCard
+          key={user.id}
+          name={user.name}
+          avatarUrl={user.avatar}
+          onClick={() => navigate(`/users/${user.id}`)}
+        />
+      ))}
+    </div>
+  );
+}
+```
+
+### Custom Hook（抽邏輯）
+
+把邏輯抽出來，讓元件變薄。
+
+```tsx
+// 抽邏輯前
+function SearchPage() {
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!query) return;
+    setLoading(true);
+    fetchSearch(query).then(setResults).finally(() => setLoading(false));
+  }, [query]);
+  // ...
+}
+
+// 抽邏輯後
+function useSearch(query: string) {
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!query) return;
+    setLoading(true);
+    fetchSearch(query).then(setResults).finally(() => setLoading(false));
+  }, [query]);
+
+  return { results, loading };
+}
+
+function SearchPage() {
+  const [query, setQuery] = useState('');
+  const { results, loading } = useSearch(query);
+  // 元件只剩 UI 邏輯
+}
+```
 
 ---
 

@@ -81,17 +81,91 @@ HTML 主要負責：
 ```html
 <form>
   <label for="email">Email</label>
-  <input id="email" name="email" type="email" />
+  <input id="email" name="email" type="email" required />
+
+  <!-- input type 決定手機鍵盤與瀏覽器驗證行為 -->
+  <input type="tel" />       <!-- 電話數字鍵盤 -->
+  <input type="number" />    <!-- 數字輸入 -->
+  <input type="date" />      <!-- 日期選擇器 -->
+  <input type="password" />  <!-- 密碼遮罩 -->
+
+  <select name="role">
+    <option value="admin">管理員</option>
+    <option value="user">一般使用者</option>
+  </select>
 
   <button type="submit">送出</button>
+  <button type="reset">清除</button>
+  <button type="button">不送出表單的按鈕</button>
 </form>
 ```
 
 要點：
 
-- `label` 要正確對應 input
-- `button` 要寫清楚 `type`
+- `label` 要正確對應 input（用 `for` 對應 `id`）
+- `button` 要寫清楚 `type`，沒寫預設是 `submit`
 - 表單不是只有視覺，還要考慮鍵盤操作與驗證流程
+
+---
+
+## Meta Tags（常見重要設定）
+
+```html
+<head>
+  <!-- 基本 -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>頁面標題</title>
+  <meta name="description" content="頁面描述，影響搜尋結果摘要" />
+
+  <!-- Open Graph（社群分享時的預覽卡片） -->
+  <meta property="og:title" content="頁面標題" />
+  <meta property="og:description" content="頁面描述" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:url" content="https://example.com/page" />
+
+  <!-- 阻止搜尋引擎索引 -->
+  <meta name="robots" content="noindex, nofollow" />
+</head>
+```
+
+`viewport` meta tag 是 RWD 必備，沒有它手機瀏覽器會用桌面版尺寸縮小顯示。
+
+---
+
+## 響應式圖片
+
+```html
+<!-- loading="lazy"：延遲載入，提升初始頁面速度 -->
+<img src="/photo.jpg" alt="說明文字" loading="lazy" />
+
+<!-- srcset：根據螢幕解析度提供不同圖片 -->
+<img
+  src="/photo-400.jpg"
+  srcset="/photo-400.jpg 400w, /photo-800.jpg 800w, /photo-1200.jpg 1200w"
+  sizes="(max-width: 600px) 400px, (max-width: 1024px) 800px, 1200px"
+  alt="活動主視覺"
+/>
+```
+
+---
+
+## data-* 自訂屬性
+
+```html
+<!-- HTML 端 -->
+<button data-action="delete" data-id="42">刪除</button>
+
+<!-- JS 端讀取 -->
+<script>
+  btn.addEventListener('click', (e) => {
+    const action = e.currentTarget.dataset.action; // 'delete'
+    const id = e.currentTarget.dataset.id;         // '42'
+  });
+</script>
+```
+
+`data-*` 是把少量資訊附在 DOM 元素上的標準做法，比起用 `id` 硬塞資料要乾淨很多。
 
 ---
 
