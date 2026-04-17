@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "c5086ebb4d1e6041",
+        "id": "3e7081f911464d21",
         "type": "tabs",
         "children": [
           {
-            "id": "7c04b78c7f59c925",
+            "id": "c75819a005c95dc0",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -180,12 +180,16 @@
       "bases:建立新的 base": false
     }
   },
-  "active": "7c04b78c7f59c925",
+  "active": "c75819a005c95dc0",
   "lastOpenFiles": [
-    "README.md",
-    "status.png",
     "前端工程師.md",
+    "07-效能優化/Core Web Vitals.md",
+    "07-效能優化/渲染優化.md",
+    "2026-04-18.md",
     "未命名.canvas",
+    "README.md",
+    "未命名 1.canvas",
+    "status.png",
     "11-DevOps與部署/前端部署排錯實戰.md",
     "08-瀏覽器與Web-APIs/API錯誤處理實戰.md",
     "02-框架與函式庫/React表單提交流程實戰.md",
@@ -208,10 +212,6 @@
     "04-樣式解決方案/00-索引.md",
     "03-狀態管理/00-索引.md",
     "02-框架與函式庫/00-索引.md",
-    "01-基礎技術/00-索引.md",
-    "01-基礎技術/切版技巧.md",
-    "未命名 1.canvas",
-    "11-DevOps與部署/CI-CD.md",
     "docs/superpowers/plans",
     "docs/superpowers/specs",
     "docs/superpowers",
