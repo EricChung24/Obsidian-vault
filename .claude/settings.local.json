@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.md$\")",
+      "Bash(find \"C:\\\\Users\\\\USER\\\\Desktop\\\\database\" -name \"*.md\" -exec sed -i 's/← \\\\[\\\\[🏠 首頁\\\\]\\\\]/← [[前端工程師]]/g' {} \\\\;)"
+    ]
+  }
+}
