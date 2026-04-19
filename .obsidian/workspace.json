@@ -11,10 +11,14 @@
             "id": "c75819a005c95dc0",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "關聯圖檢視"
+              "type": "markdown",
+              "state": {
+                "file": "log/log.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "log"
             }
           }
         ]
@@ -70,8 +74,7 @@
               "title": "書籤"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -182,6 +185,24 @@
   },
   "active": "c75819a005c95dc0",
   "lastOpenFiles": [
+    "wiki/04-樣式解決方案/Tailwind CSS.md",
+    "wiki/04-樣式解決方案/Sass.md",
+    "wiki/04-樣式解決方案/CSS-in-JS.md",
+    "wiki/04-樣式解決方案/Bootstrap 5.md",
+    "wiki/01-基礎技術/切版技巧.md",
+    "wiki/01-基礎技術/常見版型模板.md",
+    "wiki/01-基礎技術/現代CSS新特性.md",
+    "wiki/01-基礎技術/正則表達式.md",
+    "wiki/08-瀏覽器與Web-APIs/Fetch API vs Axios.md",
+    "wiki/06-測試/元件測試實戰.md",
+    "wiki/10-無障礙與資安/WCAG與a11y實踐.md",
+    "wiki/03-狀態管理/狀態管理比較.md",
+    "wiki/05-建置工具/Monorepo工具.md",
+    "wiki/05-建置工具/ESLint與格式化.md",
+    "wiki/05-建置工具/套件管理.md",
+    "wiki/01-基礎技術/瀏覽器渲染原理.md",
+    "01-基礎技術/JavaScript.md",
+    "08-瀏覽器與Web-APIs/DOM操作.md",
     "前端工程師.md",
     "07-效能優化/Core Web Vitals.md",
     "07-效能優化/渲染優化.md",
@@ -194,24 +215,6 @@
     "08-瀏覽器與Web-APIs/API錯誤處理實戰.md",
     "02-框架與函式庫/React表單提交流程實戰.md",
     "未命名 2.canvas",
-    "12-面試準備/前端系統設計回答模板.md",
-    "12-面試準備/React面試回答模板.md",
-    "12-面試準備/JavaScript面試回答模板.md",
-    "11-DevOps與部署/00-索引.md",
-    "02-框架與函式庫/Next.js資料取得策略.md",
-    "02-框架與函式庫/React元件拆分實戰.md",
-    "02-框架與函式庫/React狀態設計實戰.md",
-    "02-框架與函式庫/React.md",
-    "12-面試準備/00-索引.md",
-    "10-無障礙與資安/00-索引.md",
-    "09-設計模式/00-索引.md",
-    "08-瀏覽器與Web-APIs/00-索引.md",
-    "07-效能優化/00-索引.md",
-    "06-測試/00-索引.md",
-    "05-建置工具/00-索引.md",
-    "04-樣式解決方案/00-索引.md",
-    "03-狀態管理/00-索引.md",
-    "02-框架與函式庫/00-索引.md",
     "docs/superpowers/plans",
     "docs/superpowers/specs",
     "docs/superpowers",

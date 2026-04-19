@@ -7,6 +7,8 @@ created: 2026-04-17
 
 > React 效能優化的重點不是把所有元件都 memo 化，而是找出真正的瓶頸，再用對應的方法處理。
 
+> **本頁範圍**：如何用 memo、useMemo、useCallback 解決效能問題。→ 了解 re-render 觸發條件見 [[React渲染與重渲染]]；Virtual DOM 底層見 [[渲染優化]]。
+
 ---
 
 ## 先講結論
